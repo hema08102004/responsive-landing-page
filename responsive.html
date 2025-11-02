@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Interactive Navigation Menu</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-menu {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      background-color: #333;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .nav-item {
+      position: relative;
+      padding: 15px;
+      cursor: pointer;
+    }
+    .nav-item:hover {
+      background-color: #555;
+    }
+    .nav-item.active {
+      background-color: #007bff;
+    }
+    .submenu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #333;
+      padding: 10px;
+      display: none;
+    }
+    .submenu li {
+      padding: 10px;
+      border-bottom: 1px solid #444;
+    }
+    .submenu li:hover {
+      background-color: #555;
+    }
+    .main-content {
+      margin-top: 50px; /* adjust to match nav-menu height */
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <ul class="nav-menu">
+    <li class="nav-item" onclick="toggleSubmenu(this)">Home</li>
+    <li class="nav-item" onclick="toggleSubmenu(this)">About
+      <ul class="submenu">
+        <li>Our Team</li>
+        <li>Mission Statement</li>
+        <li>History</li>
+      </ul>
+    </li>
+    <li class="nav-item" onclick="toggleSubmenu(this)">Services
+      <ul class="submenu">
+        <li>Web Development</li>
+        <li>Digital Marketing</li>
+        <li>Consulting</li>
+      </ul>
+    </li>
+    <li class="nav-item" onclick="toggleSubmenu(this)">Contact</li>
+  </ul>
+
+  <div class="main-content">
+    <!-- your page content here -->
+    <h1>Welcome to our website!</h1>
+    <p>This is a sample page.</p>
+  </div>
+
+  <script>
+    function toggleSubmenu(item) {
+      const submenu = item.querySelector('.submenu');
+      if (submenu) {
+        submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+      }
+      document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+    }
+  </script>
+</body>
+</html>
